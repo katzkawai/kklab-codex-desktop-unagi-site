@@ -40,6 +40,18 @@
 - HTML / CSS / バニラ JavaScript のみ。ビルド不要。
 - フォント：Shippori Mincho、Noto Sans JP（Google Fonts）
 
+## 公開先
+
+GitHub Pages で公開しています：http://katzkawai.org/kklab-codex-desktop-unagi-site/
+
+## 更新履歴
+
+- **2026-06-20**
+  - GitHub Pages で公開、README に「公開先」「更新履歴」を追記
+  - 架空のデモサイトである旨をサイト上（ヒーローの注意書きバナー）と README に明記
+  - CSS・JavaScript を `index.html` に内包し、自己完結ファイル化
+  - 初版作成（ヒーロー／こだわり／お品書き／お取り寄せ〔カート機能〕／お客様の声／店舗案内／予約フォーム、レスポンシブ対応・和モダンデザイン）
+
 ## ライセンス・利用について
 
 学習・デモ用途のサンプルです。実運用の際は内容を正しい情報へ差し替えのうえご利用ください。
