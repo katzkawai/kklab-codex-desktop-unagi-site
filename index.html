@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>浜名湖うなぎ｜炭火焼 鰻処 湖松（こまつ）</title>
+<meta name="description" content="浜名湖産うなぎの専門店「鰻処 湖松」。創業以来受け継ぐ秘伝のタレと炭火焼で、ふっくら香ばしい本場の蒲焼をお届けします。お取り寄せ・店舗ご予約承ります。">
+<meta property="og:title" content="浜名湖うなぎ｜炭火焼 鰻処 湖松">
+<meta property="og:description" content="浜名湖産うなぎ専門店。秘伝のタレと炭火焼の本場の味をご家庭へ。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐟</text></svg>">
+<style>
+/* ===== Design tokens ===== */
+:root{
+  --charcoal:#1c1714;
+  --ink:#2b211a;
+  --paper:#f7f1e6;
+  --paper-2:#efe5d2;
+  --tare:#7a3b16;       /* 蒲焼のタレ */
+  --tare-deep:#5a2a0e;
+  --gold:#c79a4b;       /* 照り・金 */
+  --gold-soft:#e3c280;
+  --green:#3f5d3a;      /* 浜名湖の水草 */
+  --water:#2f5b6b;      /* 浜名湖 */
+  --text:#332a22;
+  --muted:#7a6e60;
+  --line:rgba(122,59,22,.18);
+  --shadow:0 18px 50px -22px rgba(40,22,8,.5);
+  --radius:18px;
+  --mincho:"Shippori Mincho",serif;
+  --sans:"Noto Sans JP",system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:74px}
+body{
+  font-family:var(--sans);
+  color:var(--text);
+  background:var(--paper);
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,92%);margin-inline:auto}
+
+/* ===== Header ===== */
+.site-header{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  background:rgba(247,241,230,.0);
+  transition:background .35s, box-shadow .35s, backdrop-filter .35s;
+}
+.site-header.scrolled{
+  background:rgba(247,241,230,.92);
+  backdrop-filter:blur(10px);
+  box-shadow:0 6px 24px -16px rgba(40,22,8,.55);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;
+  width:min(1120px,92%);margin-inline:auto;height:72px}
+.brand{display:flex;align-items:center;gap:.6rem;color:#fff}
+.site-header.scrolled .brand{color:var(--ink)}
+.brand-mark{
+  font-family:var(--mincho);font-weight:800;font-size:1.5rem;
+  width:44px;height:44px;display:grid;place-items:center;border-radius:50%;
+  background:linear-gradient(145deg,var(--tare),var(--tare-deep));
+  color:var(--gold-soft);box-shadow:inset 0 0 0 2px rgba(231,154,75,.45);
+}
+.brand-text{display:flex;flex-direction:column;line-height:1.25}
+.brand-name{font-family:var(--mincho);font-weight:700;font-size:1.12rem;letter-spacing:.04em}
+.brand-sub{font-size:.7rem;letter-spacing:.18em;opacity:.85}
+.nav{display:flex;align-items:center;gap:1.6rem}
+.nav a{color:#fff;font-weight:500;font-size:.95rem;position:relative;transition:color .25s}
+.site-header.scrolled .nav a{color:var(--ink)}
+.nav a:not(.nav-cta)::after{
+  content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;
+  background:var(--gold);transition:width .3s}
+.nav a:not(.nav-cta):hover::after{width:100%}
+.nav-cta{
+  background:var(--gold);color:var(--ink)!important;padding:.5rem 1.2rem;
+  border-radius:999px;font-weight:700;transition:transform .2s,box-shadow .2s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 20px -10px rgba(199,154,75,.8)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.nav-toggle span{width:26px;height:2px;background:#fff;transition:.3s}
+.site-header.scrolled .nav-toggle span{background:var(--ink)}
+
+/* ===== Hero ===== */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(120% 80% at 50% 0%,rgba(199,154,75,.25),transparent 55%),
+    linear-gradient(160deg,#241813,#3a2415 45%,#5a2a0e 100%);
+}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;
+  background:
+    repeating-linear-gradient(115deg,rgba(255,255,255,.05) 0 2px,transparent 2px 7px),
+    radial-gradient(60% 60% at 80% 30%,rgba(231,194,128,.35),transparent 60%);
+  animation:emberShift 14s ease-in-out infinite alternate;
+}
+@keyframes emberShift{to{transform:translate3d(-3%,2%,0) scale(1.08)}}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,transparent,rgba(20,12,8,.55))}
+.hero-content{position:relative;z-index:2;width:min(820px,90%);padding-top:60px}
+.hero-eyebrow{letter-spacing:.3em;font-size:.8rem;color:var(--gold-soft);margin-bottom:1.4rem}
+.hero-title{
+  font-family:var(--mincho);font-weight:800;line-height:1.3;
+  font-size:clamp(2.4rem,6vw,4.4rem);text-shadow:0 4px 30px rgba(0,0,0,.4)}
+.hero-title .accent{color:var(--gold-soft)}
+.hero-lead{margin:1.6rem auto 2.4rem;font-size:clamp(.95rem,2vw,1.12rem);max-width:36em;opacity:.95}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hero-badges{
+  list-style:none;display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap;
+  margin-top:3rem;font-size:.85rem;opacity:.92}
+.hero-badges li{position:relative;padding-left:1.3rem}
+.hero-badges li::before{content:"●";color:var(--gold);position:absolute;left:0;font-size:.6rem;top:.45em}
+.hero-badges strong{color:var(--gold-soft)}
+.scroll-cue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:2;color:#fff;font-size:1.2rem;animation:bob 1.8s ease-in-out infinite;opacity:.8}
+@keyframes bob{50%{transform:translate(-50%,8px)}}
+
+/* ===== Buttons ===== */
+.btn{
+  display:inline-block;font-weight:700;font-family:var(--sans);
+  padding:.95rem 2rem;border-radius:999px;border:2px solid transparent;
+  cursor:pointer;transition:transform .2s,box-shadow .25s,background .25s,color .25s;font-size:.98rem}
+.btn-sm{padding:.6rem 1.2rem;font-size:.85rem}
+.btn-primary{background:linear-gradient(145deg,var(--gold),#b1832f);color:var(--ink);box-shadow:0 14px 28px -14px rgba(199,154,75,.9)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 34px -14px rgba(199,154,75,1)}
+.btn-ghost{border-color:rgba(255,255,255,.6);color:#fff}
+.btn-ghost:hover{background:#fff;color:var(--ink)}
+
+/* ===== Sections ===== */
+.section{padding:clamp(4rem,9vw,7rem) 0}
+.section-head{text-align:center;max-width:42em;margin:0 auto clamp(2.5rem,5vw,3.6rem)}
+.section-eyebrow{letter-spacing:.32em;font-size:.74rem;color:var(--gold);font-weight:700;margin-bottom:.8rem}
+.section-title{font-family:var(--mincho);font-weight:700;font-size:clamp(1.8rem,4.5vw,2.7rem);line-height:1.35;position:relative;display:inline-block}
+.section-title::after{content:"";display:block;width:54px;height:3px;background:var(--gold);margin:.9rem auto 0;border-radius:2px}
+.section-desc{margin-top:1.2rem;color:var(--muted);font-size:1rem}
+
+/* ===== About cards ===== */
+.about{background:linear-gradient(180deg,var(--paper),var(--paper-2))}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.card{
+  background:#fff;border-radius:var(--radius);padding:2.4rem 1.9rem;text-align:center;
+  border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-8px)}
+.card-icon{font-size:2.6rem;margin-bottom:1rem}
+.card h3{font-family:var(--mincho);font-size:1.3rem;margin-bottom:.8rem;color:var(--tare-deep)}
+.card p{color:var(--muted);font-size:.95rem}
+
+/* ===== Stats ===== */
+.stats{background:var(--charcoal);color:#fff;padding:clamp(3rem,6vw,4.5rem) 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center}
+.stat-num{font-family:var(--mincho);font-weight:800;font-size:clamp(2.2rem,5vw,3.2rem);color:var(--gold-soft)}
+.stat-unit{font-family:var(--mincho);font-size:1.1rem;color:var(--gold-soft);margin-left:.2rem}
+.stat p{margin-top:.4rem;font-size:.86rem;opacity:.82;letter-spacing:.04em}
+
+/* ===== Menu ===== */
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.menu-item{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .3s}
+.menu-item:hover{transform:translateY(-6px)}
+.menu-photo{
+  height:150px;display:grid;place-items:center;font-family:var(--mincho);font-size:3rem;color:rgba(255,255,255,.92);
+  background:
+    radial-gradient(120% 90% at 30% 20%,rgba(255,255,255,.25),transparent 55%),
+    linear-gradient(150deg,var(--tone),color-mix(in srgb,var(--tone) 55%,#3a2415))}
+.menu-body{padding:1.4rem 1.5rem 1.7rem}
+.menu-body h3{font-family:var(--mincho);font-size:1.25rem;display:flex;align-items:center;gap:.6rem}
+.menu-rank{font-size:.72rem;background:var(--tare);color:var(--gold-soft);padding:.15rem .6rem;border-radius:4px}
+.menu-body p{color:var(--muted);font-size:.9rem;margin:.5rem 0 .9rem}
+.menu-price{font-family:var(--mincho);font-weight:700;font-size:1.3rem;color:var(--tare-deep)}
+
+/* ===== Shop ===== */
+.shop{background:linear-gradient(180deg,var(--paper-2),var(--paper))}
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;align-items:stretch}
+.product{position:relative;background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .3s}
+.product:hover{transform:translateY(-6px)}
+.product-featured{outline:3px solid var(--gold);outline-offset:-3px}
+.product-tag{position:absolute;top:14px;left:14px;z-index:2;background:var(--tare);color:var(--gold-soft);font-size:.74rem;font-weight:700;padding:.25rem .8rem;border-radius:999px}
+.product-img{height:170px;display:grid;place-items:center;font-family:var(--mincho);font-size:2.4rem;color:#fff;
+  background:radial-gradient(120% 90% at 70% 10%,rgba(255,255,255,.28),transparent 55%),linear-gradient(150deg,var(--tone),color-mix(in srgb,var(--tone) 50%,#3a2415))}
+.product-info{padding:1.5rem;display:flex;flex-direction:column;flex:1}
+.product-info h3{font-family:var(--mincho);font-size:1.2rem;margin-bottom:.4rem}
+.product-note{color:var(--muted);font-size:.84rem;margin-bottom:1rem}
+.product-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:.6rem;flex-wrap:wrap}
+.product-price{font-family:var(--mincho);font-weight:700;font-size:1.2rem;color:var(--tare-deep)}
+.product-price small{font-size:.65rem;color:var(--muted);font-weight:400}
+
+/* ===== Voice ===== */
+.voice{background:var(--ink);color:#fff}
+.voice .section-title{color:#fff}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.voice-card{background:rgba(255,255,255,.05);border:1px solid rgba(231,194,128,.22);border-radius:var(--radius);padding:2rem 1.7rem;position:relative}
+.voice-card::before{content:"\201C";font-family:var(--mincho);font-size:3.4rem;color:var(--gold);line-height:.4;opacity:.7}
+.voice-card p{margin:.6rem 0 1.2rem;opacity:.94}
+.voice-card cite{font-style:normal;color:var(--gold-soft);font-size:.85rem}
+
+/* ===== Access ===== */
+.access{background:linear-gradient(180deg,var(--paper),var(--paper-2))}
+.access-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:2.6rem;align-items:center}
+.access-info .section-title::after{margin-left:0}
+.access-list{margin-top:1.8rem;display:grid;grid-template-columns:auto 1fr;gap:.6rem 1.4rem}
+.access-list dt{font-family:var(--mincho);font-weight:700;color:var(--tare-deep);white-space:nowrap}
+.access-list dd{color:var(--text)}
+.access-list a{color:var(--water);font-weight:700}
+.access-map{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+.access-map iframe{width:100%;height:380px;border:0;display:block}
+
+/* ===== Reserve ===== */
+.reserve{background:linear-gradient(150deg,#2a1c14,#5a2a0e);color:#fff;text-align:center}
+.reserve-inner{max-width:680px}
+.reserve h2{font-family:var(--mincho);font-size:clamp(1.7rem,4vw,2.4rem)}
+.reserve > .container > p,.reserve-inner > p{margin:1rem 0 2.2rem;opacity:.9}
+.reserve-form{display:grid;gap:1rem;text-align:left}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.reserve-form label{display:flex;flex-direction:column;gap:.4rem;font-size:.85rem;font-weight:500;color:var(--gold-soft)}
+.reserve-form input,.reserve-form select,.reserve-form textarea{
+  font-family:var(--sans);font-size:.95rem;padding:.8rem 1rem;border-radius:10px;border:1px solid rgba(231,194,128,.35);
+  background:rgba(255,255,255,.96);color:var(--text)}
+.reserve-form textarea{resize:vertical}
+.reserve-form .btn{justify-self:center;margin-top:.6rem;min-width:200px}
+.form-note{text-align:center;font-size:.9rem;min-height:1.2em;color:var(--gold-soft)}
+
+/* ===== Footer ===== */
+.site-footer{background:var(--charcoal);color:#d9cdba;padding:3rem 0 2rem}
+.footer-inner{display:grid;grid-template-columns:1fr auto;gap:1.6rem 2rem;align-items:center}
+.footer-brand{display:flex;align-items:center;gap:.8rem}
+.footer-brand .brand-name{color:#fff;font-family:var(--mincho);font-size:1.1rem}
+.footer-brand .brand-sub{font-size:.72rem;letter-spacing:.16em;color:var(--gold-soft)}
+.footer-nav{display:flex;gap:1.4rem;flex-wrap:wrap}
+.footer-nav a{font-size:.9rem;transition:color .2s}
+.footer-nav a:hover{color:var(--gold-soft)}
+.footer-copy{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:1.4rem;font-size:.8rem;color:#9a8d7c;text-align:center}
+.footer-copy small{color:#7c705f}
+
+/* ===== Cart ===== */
+.cart-fab{
+  position:fixed;right:22px;bottom:22px;z-index:60;width:60px;height:60px;border-radius:50%;border:0;cursor:pointer;
+  background:linear-gradient(145deg,var(--gold),#b1832f);color:var(--ink);font-size:1.5rem;box-shadow:0 14px 30px -12px rgba(199,154,75,.9);
+  transition:transform .2s}
+.cart-fab:hover{transform:scale(1.08)}
+.cart-count{position:absolute;top:-4px;right:-4px;background:var(--tare);color:#fff;font-size:.72rem;font-weight:700;min-width:22px;height:22px;border-radius:11px;display:grid;place-items:center;padding:0 5px}
+.cart-drawer{
+  position:fixed;top:0;right:0;z-index:70;height:100%;width:min(380px,90%);background:var(--paper);
+  box-shadow:-20px 0 50px -20px rgba(0,0,0,.4);transform:translateX(100%);transition:transform .35s;display:flex;flex-direction:column}
+.cart-drawer.open{transform:translateX(0)}
+.cart-head{display:flex;justify-content:space-between;align-items:center;padding:1.3rem 1.5rem;border-bottom:1px solid var(--line)}
+.cart-head h3{font-family:var(--mincho);font-size:1.2rem}
+.cart-head button{background:none;border:0;font-size:1.2rem;cursor:pointer;color:var(--muted)}
+.cart-items{list-style:none;flex:1;overflow-y:auto;padding:1rem 1.5rem;display:grid;gap:.9rem;align-content:start}
+.cart-empty{color:var(--muted);text-align:center;margin-top:2rem}
+.cart-row{display:grid;grid-template-columns:1fr auto auto;gap:.6rem;align-items:center;font-size:.9rem;border-bottom:1px dashed var(--line);padding-bottom:.8rem}
+.cart-row .ci-name{font-weight:500}
+.cart-row .ci-price{font-family:var(--mincho);color:var(--tare-deep)}
+.cart-row .ci-del{background:none;border:0;cursor:pointer;color:var(--muted);font-size:1rem}
+.cart-foot{padding:1.3rem 1.5rem;border-top:1px solid var(--line)}
+.cart-total{display:flex;justify-content:space-between;font-family:var(--mincho);font-weight:700;font-size:1.2rem;margin-bottom:1rem}
+.cart-foot .btn{width:100%}
+.overlay{position:fixed;inset:0;background:rgba(20,12,8,.5);opacity:0;visibility:hidden;transition:.3s;z-index:65}
+.overlay.show{opacity:1;visibility:visible}
+
+/* ===== Reveal animation ===== */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== Responsive ===== */
+@media(max-width:900px){
+  .cards,.menu-grid,.shop-grid,.voice-grid,.stats-grid{grid-template-columns:1fr 1fr}
+  .access-inner{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr;text-align:center;justify-items:center}
+}
+@media(max-width:680px){
+  .nav{position:fixed;inset:72px 0 auto 0;flex-direction:column;gap:0;background:rgba(28,23,20,.98);
+    padding:1rem 0;transform:translateY(-130%);transition:transform .35s;align-items:stretch;text-align:center}
+  .nav.open{transform:translateY(0)}
+  .nav a{color:#fff!important;padding:.9rem;border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav .nav-cta{margin:.6rem auto;width:max-content}
+  .nav-toggle{display:flex}
+  .cards,.menu-grid,.shop-grid,.voice-grid,.stats-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="site-header" id="header">
+  <div class="header-inner">
+    <a href="#hero" class="brand">
+      <span class="brand-mark">鰻</span>
+      <span class="brand-text">
+        <span class="brand-name">鰻処 湖松</span>
+        <span class="brand-sub">浜名湖うなぎ専門</span>
+      </span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#about">こだわり</a>
+      <a href="#menu">お品書き</a>
+      <a href="#shop">お取り寄せ</a>
+      <a href="#voice">お客様の声</a>
+      <a href="#access">店舗案内</a>
+      <a href="#reserve" class="nav-cta">ご予約</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">創業 大正十二年 ─ 浜名湖のほとりより</p>
+    <h1 class="hero-title">炭火が照らす、<br>本場浜名湖の<span class="accent">鰻</span>。</h1>
+    <p class="hero-lead">職人が一尾ずつ手焼きする、ふっくら香ばしい蒲焼。<br>百年受け継ぐ秘伝のタレと、清流が育てた浜名湖うなぎを。</p>
+    <div class="hero-actions">
+      <a href="#shop" class="btn btn-primary">お取り寄せはこちら</a>
+      <a href="#menu" class="btn btn-ghost">お品書きを見る</a>
+    </div>
+    <ul class="hero-badges">
+      <li><strong>浜名湖産</strong>活鰻使用</li>
+      <li><strong>炭火</strong>手焼き</li>
+      <li><strong>秘伝のタレ</strong>百年継ぎ足し</li>
+    </ul>
+  </div>
+  <a href="#about" class="scroll-cue" aria-label="下へスクロール">▼</a>
+</section>
+
+<!-- ===== About / こだわり ===== -->
+<section class="section about" id="about">
+  <div class="container">
+    <header class="section-head">
+      <p class="section-eyebrow">OUR COMMITMENT</p>
+      <h2 class="section-title">三つの、こだわり</h2>
+      <p class="section-desc">浜名湖の恵みを、最良の状態でお客様へ。妥協なき仕事が、湖松の味をつくります。</p>
+    </header>
+    <div class="cards">
+      <article class="card">
+        <div class="card-icon">🌊</div>
+        <h3>浜名湖が育てた鰻</h3>
+        <p>海水と淡水が混じり合う汽水湖・浜名湖。温暖な気候とミネラル豊富な水が、身の締まった上質なうなぎを育みます。毎朝活きたまま仕入れる鮮度が命です。</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">🔥</div>
+        <h3>炭火の手焼き</h3>
+        <p>備長炭の遠赤外線で、外は香ばしく中はふっくら。職人が団扇をあおぎ、一尾ごとに焼き加減を見極めます。脂を程よく落とし、旨みだけを閉じ込めます。</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">🍶</div>
+        <h3>百年継ぎ足しのタレ</h3>
+        <p>創業以来、絶やすことなく注ぎ足してきた秘伝のタレ。みりんと醤油の深いコクに、うなぎの旨みが幾重にも溶け込んだ、まさに湖松の歴史そのものです。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Stats ===== -->
+<section class="stats">
+  <div class="container stats-grid">
+    <div class="stat"><span class="stat-num" data-count="100">0</span><span class="stat-unit">年</span><p>継ぎ足しの秘伝タレ</p></div>
+    <div class="stat"><span class="stat-num" data-count="48">0</span><span class="stat-unit">時間</span><p>泥抜きで臭みを除去</p></div>
+    <div class="stat"><span class="stat-num" data-count="100">0</span><span class="stat-unit">%</span><p>浜名湖・国産うなぎ</p></div>
+    <div class="stat"><span class="stat-num" data-count="30000">0</span><span class="stat-unit">尾/年</span><p>職人の手焼き実績</p></div>
+  </div>
+</section>
+
+<!-- ===== Menu / お品書き ===== -->
+<section class="section menu" id="menu">
+  <div class="container">
+    <header class="section-head">
+      <p class="section-eyebrow">MENU</p>
+      <h2 class="section-title">お品書き</h2>
+      <p class="section-desc">店舗ではご飯と肝吸い、香の物付き。すべて浜名湖産うなぎを使用しております。</p>
+    </header>
+    <div class="menu-grid">
+      <article class="menu-item">
+        <div class="menu-photo" style="--tone:#caa15a">鰻</div>
+        <div class="menu-body">
+          <h3>うな重 <span class="menu-rank">松</span></h3>
+          <p>大ぶりの蒲焼を一尾半。たっぷりと味わいたい方へ。</p>
+          <span class="menu-price">¥4,800</span>
+        </div>
+      </article>
+      <article class="menu-item">
+        <div class="menu-photo" style="--tone:#b8863b">鰻</div>
+        <div class="menu-body">
+          <h3>うな重 <span class="menu-rank">竹</span></h3>
+          <p>定番の一尾。香ばしい皮とふっくらした身の調和。</p>
+          <span class="menu-price">¥3,600</span>
+        </div>
+      </article>
+      <article class="menu-item">
+        <div class="menu-photo" style="--tone:#9c6b2e">鰻</div>
+        <div class="menu-body">
+          <h3>ひつまぶし</h3>
+          <p>そのまま、薬味、出汁茶漬け。三度の味わい方で。</p>
+          <span class="menu-price">¥4,200</span>
+        </div>
+      </article>
+      <article class="menu-item">
+        <div class="menu-photo" style="--tone:#7d5224">鰻</div>
+        <div class="menu-body">
+          <h3>白焼き</h3>
+          <p>タレを使わず素焼きに。わさび醤油で鰻本来の旨みを。</p>
+          <span class="menu-price">¥3,800</span>
+        </div>
+      </article>
+      <article class="menu-item">
+        <div class="menu-photo" style="--tone:#a98a4f">肝</div>
+        <div class="menu-body">
+          <h3>肝吸い・肝焼き</h3>
+          <p>希少な肝を一尾分。ほろ苦さが箸休めに。</p>
+          <span class="menu-price">¥600〜</span>
+        </div>
+      </article>
+      <article class="menu-item">
+        <div class="menu-photo" style="--tone:#c2954a">蒲</div>
+        <div class="menu-body">
+          <h3>うざく・う巻き</h3>
+          <p>さっぱりとした酢の物、ふわりと巻いた玉子と。</p>
+          <span class="menu-price">¥800〜</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Shop / お取り寄せ ===== -->
+<section class="section shop" id="shop">
+  <div class="container">
+    <header class="section-head">
+      <p class="section-eyebrow">ONLINE SHOP</p>
+      <h2 class="section-title">ご自宅で、本場の味を</h2>
+      <p class="section-desc">焼きたてを急速冷凍。温めるだけで、お店の蒲焼がご家庭に蘇ります。全国へ冷凍便でお届け。</p>
+    </header>
+    <div class="shop-grid">
+      <article class="product">
+        <div class="product-img" style="--tone:#bb8c3e">蒲焼</div>
+        <div class="product-info">
+          <h3>蒲焼 2尾セット</h3>
+          <p class="product-note">秘伝のタレ・山椒付き／のし対応可</p>
+          <div class="product-foot">
+            <span class="product-price">¥5,400 <small>税込・送料別</small></span>
+            <button class="btn btn-primary btn-sm add-cart" data-name="蒲焼 2尾セット" data-price="5400">カートに入れる</button>
+          </div>
+        </div>
+      </article>
+      <article class="product product-featured">
+        <span class="product-tag">人気No.1</span>
+        <div class="product-img" style="--tone:#caa15a">蒲焼</div>
+        <div class="product-info">
+          <h3>蒲焼 4尾 化粧箱</h3>
+          <p class="product-note">ご贈答に最適／のし・メッセージ無料</p>
+          <div class="product-foot">
+            <span class="product-price">¥10,800 <small>税込・送料込</small></span>
+            <button class="btn btn-primary btn-sm add-cart" data-name="蒲焼 4尾 化粧箱" data-price="10800">カートに入れる</button>
+          </div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="product-img" style="--tone:#9c6b2e">白焼</div>
+        <div class="product-info">
+          <h3>白焼き 2尾セット</h3>
+          <p class="product-note">わさび・特製ポン酢付き</p>
+          <div class="product-foot">
+            <span class="product-price">¥5,800 <small>税込・送料別</small></span>
+            <button class="btn btn-primary btn-sm add-cart" data-name="白焼き 2尾セット" data-price="5800">カートに入れる</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Voice / お客様の声 ===== -->
+<section class="section voice" id="voice">
+  <div class="container">
+    <header class="section-head">
+      <p class="section-eyebrow">VOICE</p>
+      <h2 class="section-title">お客様の声</h2>
+    </header>
+    <div class="voice-grid">
+      <blockquote class="voice-card">
+        <p>「皮はパリッ、身はとろける。今まで食べた鰻で一番でした。お取り寄せでこの味は感動です。」</p>
+        <cite>― 東京都・40代女性</cite>
+      </blockquote>
+      <blockquote class="voice-card">
+        <p>「父の還暦に化粧箱を贈りました。のし対応も丁寧で、大変喜ばれました。また利用します。」</p>
+        <cite>― 大阪府・30代男性</cite>
+      </blockquote>
+      <blockquote class="voice-card">
+        <p>「タレが本当に絶品。甘すぎず、ご飯が止まりません。浜名湖まで足を運んだ甲斐がありました。」</p>
+        <cite>― 愛知県・50代男性</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Access / 店舗案内 ===== -->
+<section class="section access" id="access">
+  <div class="container access-inner">
+    <div class="access-info">
+      <p class="section-eyebrow">ACCESS</p>
+      <h2 class="section-title">店舗案内</h2>
+      <dl class="access-list">
+        <dt>店名</dt><dd>炭火焼 鰻処 湖松（こまつ）</dd>
+        <dt>住所</dt><dd>〒431-0214 静岡県浜松市西区舞阪町（浜名湖畔）</dd>
+        <dt>電話</dt><dd><a href="tel:000-000-0000">000-000-0000</a></dd>
+        <dt>営業時間</dt><dd>11:00〜15:00 / 17:00〜21:00（L.O. 20:00）</dd>
+        <dt>定休日</dt><dd>毎週水曜日</dd>
+        <dt>席数</dt><dd>テーブル40席・座敷20席・個室あり</dd>
+        <dt>駐車場</dt><dd>30台完備</dd>
+      </dl>
+    </div>
+    <div class="access-map">
+      <iframe
+        title="浜名湖 地図"
+        src="https://www.google.com/maps?q=%E6%B5%9C%E5%90%8D%E6%B9%96&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Reserve / CTA ===== -->
+<section class="section reserve" id="reserve">
+  <div class="container reserve-inner">
+    <h2>ご予約・お問い合わせ</h2>
+    <p>ご来店のご予約、お取り寄せのご相談など、お気軽にどうぞ。</p>
+    <form class="reserve-form" id="reserveForm" novalidate>
+      <div class="form-row">
+        <label>お名前<input type="text" name="name" required placeholder="山田 太郎"></label>
+        <label>電話番号<input type="tel" name="tel" required placeholder="090-0000-0000"></label>
+      </div>
+      <div class="form-row">
+        <label>ご希望日<input type="date" name="date"></label>
+        <label>人数
+          <select name="people">
+            <option value="">選択してください</option>
+            <option>1名</option><option>2名</option><option>3〜4名</option>
+            <option>5〜6名</option><option>7名以上</option>
+          </select>
+        </label>
+      </div>
+      <label>ご要望<textarea name="message" rows="3" placeholder="ご質問・ご要望をご記入ください"></textarea></label>
+      <button type="submit" class="btn btn-primary">送信する</button>
+      <p class="form-note" id="formNote" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark">鰻</span>
+      <div>
+        <p class="brand-name">鰻処 湖松</p>
+        <p class="brand-sub">浜名湖うなぎ専門店</p>
+      </div>
+    </div>
+    <nav class="footer-nav">
+      <a href="#about">こだわり</a>
+      <a href="#menu">お品書き</a>
+      <a href="#shop">お取り寄せ</a>
+      <a href="#access">店舗案内</a>
+      <a href="#reserve">ご予約</a>
+    </nav>
+    <p class="footer-copy">© <span id="year"></span> 鰻処 湖松 ─ 浜名湖うなぎ. All rights reserved.<br>
+    <small>※本サイトはデモ用のサンプルです。住所・電話番号・価格等は架空のものです。</small></p>
+  </div>
+</footer>
+
+<!-- ===== Cart drawer ===== -->
+<button class="cart-fab" id="cartFab" aria-label="カートを開く">🛒<span class="cart-count" id="cartCount">0</span></button>
+<div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-head"><h3>お買い物カート</h3><button id="cartClose" aria-label="閉じる">✕</button></div>
+  <ul class="cart-items" id="cartItems"></ul>
+  <div class="cart-foot">
+    <p class="cart-total">合計 <span id="cartTotal">¥0</span></p>
+    <button class="btn btn-primary" id="checkout">ご注文手続きへ</button>
+  </div>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<script>
+/* ===== 鰻処 湖松 — interactions ===== */
+(function () {
+  "use strict";
+
+  /* --- Header shrink on scroll --- */
+  const header = document.getElementById("header");
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 40);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* --- Mobile nav --- */
+  const nav = document.getElementById("nav");
+  const toggle = document.getElementById("navToggle");
+  toggle.addEventListener("click", () => nav.classList.toggle("open"));
+  nav.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => nav.classList.remove("open"))
+  );
+
+  /* --- Current year --- */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* --- Scroll reveal --- */
+  const revealTargets = document.querySelectorAll(
+    ".card, .menu-item, .product, .voice-card, .stat, .section-head, .access-info, .access-map, .reserve-form"
+  );
+  revealTargets.forEach((el) => el.classList.add("reveal"));
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  revealTargets.forEach((el) => io.observe(el));
+
+  /* --- Animated counters --- */
+  const nums = document.querySelectorAll(".stat-num");
+  const fmt = (n) => n.toLocaleString("ja-JP");
+  const counterIO = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = +el.dataset.count;
+        const dur = 1500;
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = fmt(Math.round(target * eased));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        counterIO.unobserve(el);
+      });
+    },
+    { threshold: 0.6 }
+  );
+  nums.forEach((n) => counterIO.observe(n));
+
+  /* --- Cart --- */
+  const cart = [];
+  const drawer = document.getElementById("cartDrawer");
+  const overlay = document.getElementById("overlay");
+  const itemsEl = document.getElementById("cartItems");
+  const countEl = document.getElementById("cartCount");
+  const totalEl = document.getElementById("cartTotal");
+  const yen = (n) => "¥" + n.toLocaleString("ja-JP");
+
+  const openCart = () => {
+    drawer.classList.add("open");
+    overlay.classList.add("show");
+    drawer.setAttribute("aria-hidden", "false");
+  };
+  const closeCart = () => {
+    drawer.classList.remove("open");
+    overlay.classList.remove("show");
+    drawer.setAttribute("aria-hidden", "true");
+  };
+
+  const render = () => {
+    countEl.textContent = cart.length;
+    totalEl.textContent = yen(cart.reduce((s, i) => s + i.price, 0));
+    if (!cart.length) {
+      itemsEl.innerHTML = '<li class="cart-empty">カートは空です</li>';
+      return;
+    }
+    itemsEl.innerHTML = cart
+      .map(
+        (i, idx) => `
+      <li class="cart-row">
+        <span class="ci-name">${i.name}</span>
+        <span class="ci-price">${yen(i.price)}</span>
+        <button class="ci-del" data-idx="${idx}" aria-label="削除">✕</button>
+      </li>`
+      )
+      .join("");
+  };
+
+  document.querySelectorAll(".add-cart").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      cart.push({ name: btn.dataset.name, price: +btn.dataset.price });
+      render();
+      openCart();
+    })
+  );
+
+  itemsEl.addEventListener("click", (e) => {
+    const del = e.target.closest(".ci-del");
+    if (!del) return;
+    cart.splice(+del.dataset.idx, 1);
+    render();
+  });
+
+  document.getElementById("cartFab").addEventListener("click", openCart);
+  document.getElementById("cartClose").addEventListener("click", closeCart);
+  overlay.addEventListener("click", closeCart);
+  document.addEventListener("keydown", (e) => e.key === "Escape" && closeCart());
+
+  document.getElementById("checkout").addEventListener("click", () => {
+    if (!cart.length) {
+      alert("カートに商品がありません。");
+      return;
+    }
+    alert(
+      "ご注文ありがとうございます！（デモ）\n\n" +
+        cart.map((i) => `・${i.name} ${yen(i.price)}`).join("\n") +
+        "\n\n合計 " +
+        yen(cart.reduce((s, i) => s + i.price, 0))
+    );
+    cart.length = 0;
+    render();
+    closeCart();
+  });
+
+  render();
+
+  /* --- Reserve form --- */
+  const form = document.getElementById("reserveForm");
+  const note = document.getElementById("formNote");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const tel = form.tel.value.trim();
+    if (!name || !tel) {
+      note.textContent = "お名前と電話番号をご入力ください。";
+      note.style.color = "#ffd9a8";
+      return;
+    }
+    note.textContent = `${name} 様、ご予約リクエストを承りました。折り返しご連絡いたします。（デモ送信）`;
+    note.style.color = "var(--gold-soft)";
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>
